@@ -1,40 +1,33 @@
-// In App.js in a new project
-
-import * as React from 'react';
-import {View, Text, Button} from 'react-native';
+import React, {useCallback, useMemo, useRef} from 'react';
+import {View, Text, StyleSheet} from 'react-native';
+import BottomSheet from '@gorhom/bottom-sheet';
+import {GestureHandlerRootView} from 'react-native-gesture-handler';
+import {NavigationSample} from './NavigationSample';
+import {SheetSample} from './SheetSample';
 import {NavigationContainer} from '@react-navigation/native';
-import {createNativeStackNavigator} from '@react-navigation/native-stack';
 
-function HomeScreen({navigation}: any) {
+const _App = () => {
   return (
-    <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
-      <Text>Home Screen</Text>
-      <Button
-        title="Go to Details"
-        onPress={() => navigation.navigate('Details')}
-      />
+    <View
+      style={{
+        borderWidth: 3,
+        borderColor: 'red',
+        height: '100%',
+      }}>
+      <NavigationSample />
+      <SheetSample />
     </View>
   );
-}
+};
 
-function DetailsScreen() {
+const App = () => {
   return (
-    <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
-      <Text>Details Screen</Text>
-    </View>
+    <GestureHandlerRootView>
+      <NavigationContainer>
+        <_App />
+      </NavigationContainer>
+    </GestureHandlerRootView>
   );
-}
+};
 
-const Stack = createNativeStackNavigator();
-
-function App() {
-  return (
-    <NavigationContainer>
-      <Stack.Navigator initialRouteName="Home">
-        <Stack.Screen name="Home" component={HomeScreen} />
-        <Stack.Screen name="Details" component={DetailsScreen} />
-      </Stack.Navigator>
-    </NavigationContainer>
-  );
-}
 export default App;
