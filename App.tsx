@@ -2,9 +2,10 @@ import React, {useCallback, useMemo, useRef} from 'react';
 import {View, Text, StyleSheet} from 'react-native';
 import BottomSheet from '@gorhom/bottom-sheet';
 import {GestureHandlerRootView} from 'react-native-gesture-handler';
-import {NavigationSample} from './NavigationSample';
+import {DetailsScreen, HomeScreen, NavigationSample} from './NavigationSample';
 import {SheetSample} from './SheetSample';
-import {NavigationContainer} from '@react-navigation/native';
+import {NavigationContainer, NavigationContext} from '@react-navigation/native';
+import {createMyNavigator} from './CustomNavigator';
 
 const _App = () => {
   return (
@@ -15,11 +16,10 @@ const _App = () => {
         height: '100%',
       }}>
       <NavigationSample />
-      <SheetSample />
+      {/* <SheetSample /> */}
     </View>
   );
 };
-
 const App = () => {
   return (
     <GestureHandlerRootView>
